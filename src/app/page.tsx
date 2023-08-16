@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { useState } from "react";
 import Pin from "@/components/Item";
 import { Item } from "@/types/item";
 
@@ -19,13 +17,17 @@ export default async function Home() {
       },
       body: JSON.stringify(reqBody),
     });
+
     const data = await res.json();
+
     console.log("data", data.result.data);
+
     items = data.result.data;
+
     return (
-      <div>
+      <div className="grid grid-cols-12 gap-4">
         {items.map((item, index) => (
-          <div key={index}>
+          <div className="col-span-12 md:col-span-3 lg:col-span-2 mx-auto" key={index}>
             <Pin item={item} />
           </div>
         ))}
