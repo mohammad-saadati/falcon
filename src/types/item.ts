@@ -24,7 +24,7 @@ export interface Image {
   height: number;
 }
 export interface User {
-  id: numner;
+  id: number;
   avatar: string;
   bio: string;
   username: string;
