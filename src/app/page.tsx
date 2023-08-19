@@ -1,6 +1,5 @@
-import Pin from "@/components/Item";
+import Masonry from "@/components/Masonry";
 import { Item } from "@/types/item";
-
 interface HomeProps {
   data: Item[];
 }
@@ -25,12 +24,8 @@ export default async function Home() {
     items = data.result.data;
 
     return (
-      <div className="grid grid-cols-12 gap-4">
-        {items.map((item, index) => (
-          <div className="col-span-12 md:col-span-3 lg:col-span-2 mx-auto" key={index}>
-            <Pin item={item} />
-          </div>
-        ))}
+      <div className="">
+        <Masonry items={items} />
       </div>
     );
   } catch (error) {
