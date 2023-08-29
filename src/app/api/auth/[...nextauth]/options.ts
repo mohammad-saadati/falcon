@@ -6,12 +6,12 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
+        password: {
           label: "Username",
           type: "username",
           placeholder: "username",
         },
-        password: {
+        phone_number: {
           label: "Password",
           type: "password",
           placeholder: "password",
