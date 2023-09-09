@@ -22,3 +22,40 @@ body {
   background: grey;
   margin-bottom: 30px;
 }
+/* toastify */
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+      width: 90%!important;
+  }
+}
+.Toastify__progress-bar {
+  background-color: red!important;
+}
+/* .Toastify__toast-body {
+  text-align: right;
+  direction: rtl;
+} */
+@keyframes fadetoleft {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+@keyframes fadetoright {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0;
+  }
+}
+.toastify-toast--left {
+  animation: fadetoleft 0.5s;
+}
+
+.toastify-toast--right {
+  animation: fadetoright 0.5s;
+}
