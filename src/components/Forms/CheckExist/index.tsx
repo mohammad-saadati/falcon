@@ -87,7 +87,7 @@ export default function index() {
           ورود/ثبت نام
         </button>
       </form>
-      <ToastContainer rtl/>
+      <ToastContainer rtl />
     </>
   );
 }
