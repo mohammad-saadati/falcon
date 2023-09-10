@@ -6,12 +6,12 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        password: {
-          label: "Username",
-          type: "username",
-          placeholder: "username",
+        phoneNumber: {
+          label: "phoneNumber",
+          type: "phoneNumber",
+          placeholder: "phoneNumber",
         },
-        phone_number: {
+        password: {
           label: "Password",
           type: "password",
           placeholder: "password",
@@ -41,5 +41,8 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
-  pages: {},
+  pages: {
+    signIn: "auth/login",
+    signUp: "auth/signup",
+  },
 };
