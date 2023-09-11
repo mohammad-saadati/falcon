@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { login } from "@/utilities/auth";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -19,30 +20,19 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const response = await fetch(
-            "https://didanist.com/api/v1_0/user/login",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(credentials),
-            }
+          const response = await login(
+            credentials.phoneNumber,
+            credentials.password
           );
-
-          const data = await response.json();
-
-          if (response.ok && data.success) {
-            return {};
-          } else {
-            return { msb: "error happened" };
-          }
+          return {};
         } catch (err) {
-          return { err };
+          return null;
         }
       },
     }),
   ],
   pages: {
-    signIn: "auth/login",
-    signUp: "auth/signup",
+    signIn: "/auth/signIn",
+    signUp: "/auth/signup",
   },
 };
