@@ -1,12 +1,13 @@
 import axios from "@/utilities/axios";
 
-export const login = async (phoneNumber, password) => {
+export const login = async (phoneNumber: string, password: string) => {
   try {
     const res = await axios.post("/user/login", {
       phone_number: phoneNumber,
       password: password,
     });
-
-    console.log("login = async (phoneNumber, password)", res);
-  } catch (error) {}
+    return res.data;
+  } catch (error) {
+    return error;
+  }
 };
