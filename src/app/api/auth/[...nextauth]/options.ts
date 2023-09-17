@@ -18,21 +18,45 @@ export const options: NextAuthOptions = {
           placeholder: "password",
         },
       },
-      async authorize(credentials, req) {
-        try {
-          const response = await login(
-            credentials.phoneNumber,
-            credentials.password
-          );
-          return {};
-        } catch (err) {
+      async authorize(credentials: UserCredentialsConfig) {
+        const res = await login(credentials.phoneNumber, credentials.password);
+
+        console.log(res.success, res);
+
+        const user = {
+          name: res.result.user.name,
+          image: res.result.token.token_type,
+          email: res.result.user.avatar,
+          id: res.result.token.access_token,
+          token_type: res.result.token.token_type,
+          test: res.result.token.token_type,
+        };
+
+        if (res.success) return user;
+
+        if (!res.success) {
+          console.log(res);
           return null;
         }
+
+        const { response } = res;
+
+        if (response?.status === 404) {
+          console.log(
+            "authorize///////",
+            response.status,
+            response.statusText,
+            response
+          );
+          return null;
+        }
+
+        console.log("authorize///////", res, response);
+        // return null;
       },
     }),
   ],
   pages: {
     signIn: "/auth/signIn",
-    signUp: "/auth/signup",
   },
 };
