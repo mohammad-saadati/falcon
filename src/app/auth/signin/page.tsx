@@ -1,10 +1,17 @@
 import Login from "@/components/Forms/Login";
 import CheckExist from "@/components/Forms/CheckExist";
 
-export default function SignIn() {
+type Props = {
+  searchParams?: Record<"callbackUrl" | "error", string>;
+};
+
+export default function SignIn(props: Props) {
   return (
     <>
-      <Login />
+      <Login
+        error={props.searchParams?.error}
+        callbackUrl={props.searchParams?.callbackUrl}
+      />
     </>
   );
 }
