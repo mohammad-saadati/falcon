@@ -13,8 +13,8 @@ const Masonry: FC<MasonryProps> = ({ items }) => {
     <>
       <MasonryLayout
         breakpointCols={{
-          default: 4,
-          1100: 3,
+          1400: 6,
+          1100: 4,
           700: 2,
           500: 1,
         }}
@@ -22,10 +22,7 @@ const Masonry: FC<MasonryProps> = ({ items }) => {
         columnClassName="my-masonry-grid_column"
       >
         {items.map((item, index) => (
-          <div
-            className="col-span-12 md:col-span-3 lg:col-span-2 mx-auto"
-            key={index}
-          >
+          <div className="col-span-12" key={index}>
             <Pin item={item} />
           </div>
         ))}
