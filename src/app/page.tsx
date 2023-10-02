@@ -1,5 +1,7 @@
 import Masonry from "@/components/Masonry";
 import { Item } from "@/types/item";
+import SigninButton from "@/components/SigninButton";
+
 interface HomeProps {
   data: Item[];
 }
@@ -19,13 +21,14 @@ export default async function Home() {
 
     const data = await res.json();
 
-    console.log("data", data.result.data);
+    // console.log("data", data.result.data);
 
     items = data.result.data;
 
     return (
       <div className="">
-        <Masonry items={items} />
+        {/* <Masonry items={items} /> */}
+        <SigninButton />
       </div>
     );
   } catch (error) {
